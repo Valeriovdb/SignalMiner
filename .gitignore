@@ -1,0 +1,12 @@
+.env
+.env.local
+.env.*.local
+data/raw_*.json
+# analyzed_output.json is committed — it's the static data the backend serves
+frontend/.next/
+frontend/node_modules/
+frontend/.vercel/
+__pycache__/
+*.pyc
+.DS_Store
+*.pem
