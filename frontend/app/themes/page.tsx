@@ -65,7 +65,7 @@ function ThemesContent() {
     .filter((t) => platformFilter === "all" || t.platform === platformFilter)
     .filter((t) => !competitiveOnly || t.competitive_signal);
 
-  if (error) return <p className="text-red-400 text-sm">{error}</p>;
+  if (error) return <p className="text-slate-500 text-sm py-8 text-center">Unable to load themes. Please refresh.</p>;
 
   return (
     <div className="space-y-5">

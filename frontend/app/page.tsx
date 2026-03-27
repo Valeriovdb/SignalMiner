@@ -224,14 +224,13 @@ function LoadingState() {
   );
 }
 
-function ErrorState({ message }: { message: string }) {
+function ErrorState({ message: _ }: { message: string }) {
   return (
-    <div className="rounded-lg border border-red-900/50 bg-red-950/20 p-6 max-w-lg">
-      <h2 className="text-red-400 font-medium mb-2">Data not available</h2>
-      <p className="text-slate-400 text-sm">{message}</p>
-      <p className="text-slate-500 text-xs mt-3">
-        Run: <code className="text-slate-300">bash scripts/run_pipeline.sh</code>
-      </p>
+    <div className="flex items-center justify-center h-64">
+      <div className="text-center">
+        <p className="text-slate-400 text-sm">Unable to load data.</p>
+        <p className="text-slate-600 text-xs mt-1">Please try refreshing the page.</p>
+      </div>
     </div>
   );
 }

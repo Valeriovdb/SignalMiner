@@ -23,7 +23,7 @@ export default function OpportunitiesPage() {
       .catch((e) => setError(e.message));
   }, []);
 
-  if (error) return <p className="text-red-400 text-sm">{error}</p>;
+  if (error) return <p className="text-slate-500 text-sm py-8 text-center">Unable to load opportunities. Please refresh.</p>;
 
   const sorted = [...opportunities].sort(
     (a, b) => (PRIORITY_ORDER[a.priority] ?? 1) - (PRIORITY_ORDER[b.priority] ?? 1)
