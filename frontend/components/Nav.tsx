@@ -18,7 +18,7 @@ export function Nav() {
       <div className="max-w-6xl mx-auto px-6 flex items-center justify-between h-14">
         <div className="flex items-center gap-2">
           <span className="text-white font-semibold text-sm tracking-tight">SignalMiner</span>
-          <span className="text-slate-600 text-xs">/ Training Intelligence Gap</span>
+          <span className="text-slate-600 text-xs">/ Garmin · Discovery Workspace</span>
         </div>
         <div className="flex items-center gap-1">
           {NAV_ITEMS.map((item) => (

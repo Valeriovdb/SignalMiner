@@ -6,8 +6,8 @@ import { Nav } from "@/components/Nav";
 const geist = Geist({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "SignalMiner — Garmin Ecosystem",
-  description: "Discovery-prioritization tool for Garmin ecosystem feedback",
+  title: "SignalMiner — Garmin Discovery Workspace",
+  description: "Discovery prioritization tool for recurring Garmin user pain themes and opportunity areas",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
