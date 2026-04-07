@@ -1,5 +1,5 @@
 
-# CLAUDE.md
+# GEMINI.md
 
 ## Purpose
 This file defines how to work in this project.
