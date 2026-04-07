@@ -6,29 +6,12 @@ import { fetchOverview, fetchOpportunities } from "@/lib/api";
 import { OverviewData, Opportunity } from "@/lib/types";
 import { MetadataRow } from "@/components/MetadataRow";
 import { ScoreExplanation } from "@/components/ScoreExplanation";
+import { EvidenceQuote } from "@/components/EvidenceQuote";
 
 // ─── Editorial content ────────────────────────────────────────────────────────
 
 const SYNTHESIS_STATEMENT =
-  "The primary user frustration isn't missing data, but the lack of clear, actionable guidance derived from that data.";
-
-const KEY_PATTERNS = [
-  {
-    title: "Interpretability Gap",
-    description: "Garmin collects industry-leading data, but users struggle to translate metrics into training decisions.",
-    evidence: "Based on 420+ mentions across 3 sources"
-  },
-  {
-    title: "Ecosystem Trust",
-    description: "Sync reliability and data accuracy are the foundation of premium value. Friction here causes immediate defection signals.",
-    evidence: "Top recurring pain in Garmin Forums"
-  },
-  {
-    title: "Competitive Clarity",
-    description: "COROS and Polar are winning on simplicity and interpretation, not feature breadth.",
-    evidence: "Strong signal in cross-platform comparisons"
-  }
-];
+  "Main pattern: users struggle more with turning data into guidance than with missing features.";
 
 // ─── Page ─────────────────────────────────────────────────────────────────────
 
@@ -57,9 +40,9 @@ export default function OverviewPage() {
   return (
     <div className="max-w-4xl mx-auto space-y-16">
 
-      {/* Hero Section */}
+      {/* Section 1 — Main Takeaway */}
       <section className="space-y-6">
-        <h1 className="text-4xl font-semibold text-slate-900 leading-tight tracking-tight">
+        <h1 className="text-3xl font-semibold text-slate-900 leading-tight tracking-tight">
           {SYNTHESIS_STATEMENT}
         </h1>
         
@@ -73,58 +56,42 @@ export default function OverviewPage() {
         />
       </section>
 
-      {/* Main Patterns */}
-      <section className="space-y-8">
-        <h2 className="text-[11px] font-bold text-slate-400 uppercase tracking-[0.2em]">
-          Core Patterns
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-          {KEY_PATTERNS.map((pattern) => (
-            <div key={pattern.title} className="space-y-3">
-              <h3 className="text-lg font-semibold text-slate-900">{pattern.title}</h3>
-              <p className="text-[14px] text-slate-600 leading-relaxed">
-                {pattern.description}
-              </p>
-              <p className="text-[11px] text-slate-400 italic font-medium">
-                {pattern.evidence}
-              </p>
-            </div>
-          ))}
-        </div>
+      {/* Section 2 — How this was ranked */}
+      <section>
+        <ScoreExplanation 
+          label="ranked" 
+          explanation="Priorities are ranked by combining mention volume (Frequency), user sentiment (Severity), and how clearly the problem links to business outcomes (Business relevance). These scores are directional indicators—please inspect the underlying evidence to validate the problem statement."
+        />
       </section>
 
-      {/* Top Priority Problems */}
+      {/* Section 3 — Top priority areas */}
       <section className="space-y-8">
         <div className="flex items-baseline justify-between border-b border-slate-100 pb-4">
           <h2 className="text-[11px] font-bold text-slate-400 uppercase tracking-[0.2em]">
-            Top Priority Problems
+            Top 3 Priority Problems
           </h2>
-          <Link href="/opportunities" className="text-[11px] font-semibold text-indigo-600 hover:text-indigo-800 uppercase tracking-wider transition-colors">
-            View all {overview.opportunity_count} areas →
-          </Link>
         </div>
         
         <div className="space-y-1">
           {topPriorities.map((opp, i) => (
-            <div key={opp.opportunity_id} className="group flex items-start gap-8 py-6 transition-colors hover:bg-slate-50/50 rounded-lg -mx-4 px-4">
-              <span className="text-xl font-bold text-slate-200 tabular-nums pt-1 select-none">
-                0{i + 1}
-              </span>
-              <div className="flex-1 space-y-2">
-                <div className="flex items-center gap-3">
-                  <h3 className="text-lg font-semibold text-slate-900 group-hover:text-indigo-600 transition-colors">{opp.opportunity_name}</h3>
-                  <span className={`text-[10px] px-1.5 py-0.5 rounded border font-bold uppercase tracking-wider ${
-                    opp.priority === "high" ? "bg-red-50 text-red-700 border-red-200" : "bg-amber-50 text-amber-700 border-amber-200"
-                  }`}>
-                    {opp.priority} priority
-                  </span>
-                </div>
-                <p className="text-[15px] text-slate-600 leading-relaxed max-w-2xl">
-                  {opp.user_problem}
-                </p>
-                <div className="flex gap-4 text-[12px] text-slate-400 font-medium">
-                   <span>{opp.linked_theme_ids.length} supporting themes</span>
-                   <span className="before:content-['•'] before:mr-4">High business relevance</span>
+            <div key={opp.opportunity_id} className="group py-6 border-b border-slate-50 last:border-0">
+              <div className="flex items-start gap-8">
+                <span className="text-xl font-bold text-slate-200 tabular-nums pt-1 select-none">
+                  0{i + 1}
+                </span>
+                <div className="flex-1 space-y-3">
+                  <div className="flex items-center gap-3">
+                    <h3 className="text-lg font-semibold text-slate-900 group-hover:text-indigo-600 transition-colors">
+                      {opp.opportunity_name}
+                    </h3>
+                  </div>
+                  <p className="text-[15px] text-slate-600 leading-relaxed max-w-2xl">
+                    {opp.user_problem}
+                  </p>
+                  <div className="flex gap-4 text-[12px] text-slate-400 font-medium pt-1">
+                     <span>{opp.linked_theme_ids.length} linked themes</span>
+                     <span className="before:content-['•'] before:mr-4">High business relevance</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -132,20 +99,23 @@ export default function OverviewPage() {
         </div>
       </section>
 
-      {/* Trust & Methodology */}
-      <section className="space-y-6 pt-8 border-t border-slate-100">
-        <h2 className="text-[11px] font-bold text-slate-400 uppercase tracking-[0.2em]">
-          Trust & Methodology
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <ScoreExplanation 
-            label="ranked" 
-            explanation="Prioritization is calculated by combining mention volume (frequency), user sentiment (severity), and cross-source consistency (confidence)."
-          />
-          <ScoreExplanation 
-            label="analyzed" 
-            explanation="Our pipeline ingests raw feedback, normalizes it across platforms, and uses thematic clustering to identify recurring pain points without manual bias."
-          />
+      {/* Section 4 — Evidence preview */}
+      <section className="space-y-6">
+        <div className="flex items-baseline justify-between border-b border-slate-100 pb-4">
+          <h2 className="text-[11px] font-bold text-slate-400 uppercase tracking-[0.2em]">
+            Evidence Preview
+          </h2>
+          <Link href="/evidence" className="text-[11px] font-semibold text-indigo-600 hover:text-indigo-800 uppercase tracking-wider transition-colors">
+            View all evidence →
+          </Link>
+        </div>
+        
+        <div className="space-y-6">
+          {/* Note: This is a static preview showing first 3 items from overview evidence, 
+              in a real scenario, this would come from a specific evidence endpoint */}
+          {overview.high_confidence_themes[0]?.evidence?.slice(0, 3).map((ev) => (
+            <EvidenceQuote key={ev.id} evidence={ev} />
+          ))}
         </div>
       </section>
 
