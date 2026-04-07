@@ -54,10 +54,7 @@ function EvidenceContent() {
     .filter((e) => activeSource === "all" || e.source === activeSource)
     .filter((e) => {
       if (activeTheme === "all") return true;
-      // This assumes evidence items might have a theme_id or similar. 
-      // If the data model only links themes -> evidence, we'd need to reverse map.
-      // For this UI redesign, we'll filter by the linked_themes if available on the object.
-      return e.linked_themes?.includes(activeTheme);
+      return e.theme_id === activeTheme;
     })
     .filter((e) => search.trim() ? e.text.toLowerCase().includes(search.toLowerCase()) : true);
 
@@ -175,7 +172,7 @@ function EvidenceContent() {
                   <div key={ev.id} className="group">
                     <EvidenceQuote 
                       evidence={ev} 
-                      linkedThemes={ev.linked_themes?.map(tid => themes.find(t => t.theme_id === tid)?.theme_name || tid)}
+                      linkedThemes={ev.theme_name ? [ev.theme_name] : []}
                     />
                   </div>
                 ))}
