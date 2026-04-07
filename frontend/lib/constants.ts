@@ -8,12 +8,12 @@ export const PLATFORM_LABELS: Record<string, string> = {
 };
 
 export const PLATFORM_COLORS: Record<string, string> = {
-  garmin: "bg-blue-500/15 text-blue-400 border-blue-500/30",
-  polar: "bg-red-500/15 text-red-400 border-red-500/30",
-  coros: "bg-cyan-500/15 text-cyan-400 border-cyan-500/30",
-  strava: "bg-orange-500/15 text-orange-400 border-orange-500/30",
-  cross_platform: "bg-violet-500/15 text-violet-400 border-violet-500/30",
-  general: "bg-slate-500/15 text-slate-400 border-slate-500/30",
+  garmin: "bg-blue-50 text-blue-700 border-blue-200",
+  polar: "bg-red-50 text-red-700 border-red-200",
+  coros: "bg-cyan-50 text-cyan-700 border-cyan-200",
+  strava: "bg-orange-50 text-orange-700 border-orange-200",
+  cross_platform: "bg-violet-50 text-violet-700 border-violet-200",
+  general: "bg-slate-50 text-slate-700 border-slate-200",
 };
 
 export const TRAINING_SURFACE_LABELS: Record<string, string> = {

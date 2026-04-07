@@ -27,8 +27,8 @@ export function DemoBanner() {
   if (!show) return null;
 
   return (
-    <div className="bg-slate-900 border-b border-slate-800 px-6 py-2">
-      <p className="text-xs text-slate-500 text-center">
+    <div className="bg-slate-50 border-b border-slate-200 px-6 py-2">
+      <p className="text-[11px] font-medium text-slate-500 text-center uppercase tracking-wider">
         Showing bundled snapshot data for demo purposes
         {date && <> · Last updated: {date}</>}
       </p>

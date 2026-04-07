@@ -19,17 +19,17 @@ export const PRIORITY_CONFIG: Record<
 > = {
   investigate_now: {
     label: "Investigate now",
-    className: "bg-red-500/10 text-red-400 border-red-500/30",
-    dot: "bg-red-400",
+    className: "bg-red-50 text-red-700 border-red-200",
+    dot: "bg-red-500",
   },
   monitor: {
     label: "Monitor",
-    className: "bg-amber-500/10 text-amber-400 border-amber-500/30",
-    dot: "bg-amber-400",
+    className: "bg-amber-50 text-amber-700 border-amber-200",
+    dot: "bg-amber-500",
   },
   needs_validation: {
     label: "Needs validation",
-    className: "bg-slate-500/10 text-slate-400 border-slate-500/30",
+    className: "bg-slate-50 text-slate-700 border-slate-200",
     dot: "bg-slate-500",
   },
 };

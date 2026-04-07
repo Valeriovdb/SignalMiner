@@ -2,9 +2,9 @@ import { Badge } from "@/components/ui/badge";
 import { SignalLevel } from "@/lib/types";
 
 const CONFIG: Record<SignalLevel, { label: string; className: string }> = {
-  high: { label: "High", className: "bg-emerald-500/15 text-emerald-400 border-emerald-500/30" },
-  medium: { label: "Medium", className: "bg-amber-500/15 text-amber-400 border-amber-500/30" },
-  low: { label: "Low", className: "bg-slate-500/15 text-slate-400 border-slate-500/30" },
+  high: { label: "High", className: "bg-emerald-50 text-emerald-700 border-emerald-200" },
+  medium: { label: "Medium", className: "bg-amber-50 text-amber-700 border-amber-200" },
+  low: { label: "Low", className: "bg-slate-50 text-slate-700 border-slate-200" },
 };
 
 interface Props {

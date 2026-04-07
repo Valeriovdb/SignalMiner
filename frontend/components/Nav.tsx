@@ -14,11 +14,11 @@ export function Nav() {
   const pathname = usePathname();
 
   return (
-    <nav className="border-b border-slate-800 bg-slate-950">
+    <nav className="border-b border-slate-200 bg-white sticky top-0 z-50">
       <div className="max-w-6xl mx-auto px-6 flex items-center justify-between h-14">
         <div className="flex items-center gap-2">
-          <span className="text-white font-semibold text-sm tracking-tight">SignalMiner</span>
-          <span className="text-slate-600 text-xs">/ Garmin · Discovery Workspace</span>
+          <span className="text-slate-900 font-semibold text-sm tracking-tight">SignalMiner</span>
+          <span className="text-slate-400 text-xs font-normal">/ Garmin · Discovery Workspace</span>
         </div>
         <div className="flex items-center gap-1">
           {NAV_ITEMS.map((item) => (
@@ -27,8 +27,8 @@ export function Nav() {
               href={item.href}
               className={`px-3 py-1.5 rounded-md text-sm transition-colors ${
                 pathname === item.href
-                  ? "text-white bg-slate-800"
-                  : "text-slate-400 hover:text-slate-200 hover:bg-slate-800/50"
+                  ? "text-slate-900 bg-slate-100 font-medium"
+                  : "text-slate-500 hover:text-slate-900 hover:bg-slate-50"
               }`}
             >
               {item.label}
